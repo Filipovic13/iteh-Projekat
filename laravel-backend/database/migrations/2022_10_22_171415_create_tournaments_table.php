@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('ruleset');
             $table->date('date');
+            $table->string('image_url');
             $table->timestamps();
         });
     }
