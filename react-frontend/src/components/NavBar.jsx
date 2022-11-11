@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Outlet} from "react-router-dom";
 
-function NavBar({token}) {
+function NavBar({token, addLoggedData}) {
     function handleLogout(){
         var config = {
             method: 'post',
@@ -16,6 +16,7 @@ function NavBar({token}) {
           .then(function (response) {
             console.log(JSON.stringify(response.data));
             window.sessionStorage.setItem("auth_token", null);
+            addLoggedData(null);
           })
           .catch(function (error) {
             console.log(error);
@@ -32,14 +33,14 @@ function NavBar({token}) {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <a className="nav-link active" aria-current="page" href="#">Register</a>
+          <a className="nav-link" aria-current="page" href="#">Home</a>
           <a className="nav-link" href="/tournaments">Tournaments</a>
           {token == null ? (
           <a className="nav-link" href="/login">
             Login
             </a> 
           ) : (
-          <a className="nav-link" href="/" onClick={handleLogout}>
+          <a className="nav-link" href="/" onClick={handleLogout} >
             Logout
             </a>
           )}
