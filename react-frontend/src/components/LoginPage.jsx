@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 
-function LoginPage({addToken}) {
+function LoginPage({addToken, addLoggedData}) {
 
   const [userData, setUserData] = useState({
     email:"",
@@ -26,7 +26,16 @@ function LoginPage({addToken}) {
       if(res.data.success === true){
         window.sessionStorage.setItem("auth_token", res.data.access_token);
         addToken(res.data.access_token);
-        navigate("/");
+
+        let id = res.data.id
+        
+        axios.get("api/users/" + id ).then((res)=>{
+          console.log(res.data.user);
+          addLoggedData(res.data.user);
+          navigate("/");
+        });
+
+        
       }
     }).catch((e)=>{
       console.log(e);
