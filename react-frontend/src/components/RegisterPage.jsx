@@ -15,6 +15,7 @@ export default function RegisterPage() {
     password:"",
   });
   let navigate = useNavigate();
+
   function handleInput(e){
     let newUserData =userData;
     newUserData[e.target.name] = e.target.value;
@@ -24,7 +25,7 @@ export default function RegisterPage() {
 
   function handleRegister(e){
     e.preventDefault();
-    axios.post("api/login", userData).then((res)=>{
+    axios.post("api/register", userData).then((res)=>{
       console.log(res.data);
       navigate("/login")
      
