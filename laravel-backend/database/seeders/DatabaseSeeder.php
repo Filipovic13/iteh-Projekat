@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Product;
 use App\Models\Registration;
 use App\Models\Tournament;
 use App\Models\User;
@@ -101,5 +102,28 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user3->id,
             'tournament_id' => $tournament1->id
         ]);
+
+
+
+
+        $prod1 = Product::create([
+            'name' => 'blue_venom_kimono',
+            'image_url' => 'https://fightshop.rs/wp-content/uploads/2019/11/venum-03057-018-a0-venum-03057-018-a0-galery_image_1-bjj_gi_contender_2_0_blue_navy_1500_01.jpg'
+        ]);
+
+        $prod2 = Product::create([
+            'name' => 'grey_venom_kimono',
+            'image_url' => 'https://fightshop.rs/wp-content/uploads/2020/03/venum-03057-010-a0-venum-03057-010-a0-galery_image_1-bjj_gi_contender_2_0_grey_1500_01.jpg'
+        ]);
+
+        $prod2 = Product::create([
+            'name' => 'black_venom_kimono',
+            'image_url' => 'https://fightshop.rs/wp-content/uploads/2018/01/bjj_gi_contender_2_0_black_1500_01_1_4.jpg'
+        ]);
+
+
+
+
+
     }
 }
