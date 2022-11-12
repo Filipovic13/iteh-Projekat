@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UserController;
@@ -49,3 +50,6 @@ Route::group(['middleware'=>['auth:sanctum'] ], function(){
 });
 
 Route::resource('registrations', RegistrationController::class)->only(['index']);
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
