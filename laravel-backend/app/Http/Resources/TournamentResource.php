@@ -23,6 +23,7 @@ class TournamentResource extends JsonResource
             'city'=>$this->resource->city,
             'ruleset'=>$this->resource->ruleset,
             'date'=>$this->resource->date,
+            'image_url'=>$this->resource->image_url,
         ];
     }
 }
