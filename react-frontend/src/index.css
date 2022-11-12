@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 * {
   box-sizing: border-box;
 }
@@ -8,13 +8,25 @@ body {
   display: flex;
   justify-content: space-between;
   font-weight: 400;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
+  color: #ffffff;
 }
-h1,h2,h3,h4,h5,h6,label,span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span {
   font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
-body, html, .App, #root, .auth-wrapper {
+body,
+html,
+.App,
+#root,
+.auth-wrapper {
   width: 100%;
   height: 100%;
   color: #ffffff;
@@ -22,16 +34,13 @@ body, html, .App, #root, .auth-wrapper {
 .navbar-light {
   background-color: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
- 
 }
 
 .navbar-light a {
-  color:#282c34;
+  color: #282c34;
 }
 
-
-
-.loginForm{
+.loginForm {
   width: 550px;
   margin: 0 auto;
   color: aliceblue;
@@ -39,10 +48,9 @@ body, html, .App, #root, .auth-wrapper {
   margin-top: 200px;
   border: 1px solid #ffffff;
   border-radius: 30px;
-
 }
 
-.registerForm{
+.registerForm {
   width: 550px;
   margin: 0 auto;
   color: aliceblue;
@@ -50,10 +58,9 @@ body, html, .App, #root, .auth-wrapper {
   margin-top: 100px;
   border: 1px solid #ffffff;
   border-radius: 30px;
-  
 }
 
-.card{
+.card {
   background-color: #3f434a;
   margin-bottom: 50px;
   width: 1200px;
@@ -63,3 +70,57 @@ body, html, .App, #root, .auth-wrapper {
   padding: 10px;
 }
 
+.products {
+  display: flex;
+  flex-direction: row;
+  margin: 25px;
+}
+
+.product {
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(211, 211, 211);
+  max-width: 350px;
+  margin: 50px;
+}
+
+.product button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.product img {
+  height: 300px;
+  width: 300px;
+}
+
+.productAdd {
+  display: flex;
+  margin-left: 23px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 100px;
+  height: 62px;
+  width: 277px;
+}
+
+.productNamePrice {
+  display: flex;
+  margin-left: 23px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 100px;
+  height: 87px;
+  width: 277px;
+}
+
+@media (max-width: 800px) {
+  .items {
+    flex-direction: column;
+  }
+}
+
+.hr {
+  width: 250px;
+}
