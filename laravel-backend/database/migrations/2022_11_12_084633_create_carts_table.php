@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image_url');
             $table->string('quantity');
-            $table->string('user_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
