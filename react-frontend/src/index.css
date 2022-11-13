@@ -128,15 +128,7 @@ html,
 .hr {
   width: 250px;
 }
-h3 {
-  font-family:  monospace;
-  color: black;
-  font-weight: bold;
-  text-shadow: 0 0 2px rgb(114, 114, 114);
 
-
-
-}
 
 h4 {
   color: rgb(255, 255, 255);
