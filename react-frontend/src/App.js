@@ -65,6 +65,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/" element={<NavBar token={token} />}>
+        <Route exact path="/" element={<Naslovna />}/>
           <Route path="tournaments" element={<TournamentsPage />} />
           <Route
             path="eventRegistration"
