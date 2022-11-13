@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import TournamentsPage from "./components/TournamentsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EventRegistration from "./components/EventRegistration";
+import Naslovna from "./components/Naslovna";
 import Products from "./components/Products";
 import axios from "axios";
 import { useState, useEffect } from "react";
