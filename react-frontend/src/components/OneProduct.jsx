@@ -8,7 +8,7 @@ function OneProduct({ product, addItem, inCart }) {
 
       <div className="infoWrapper">
         <div className="productNamePrice">
-          <h3>{product.name}</h3>
+          <h3 className="grid-item">{product.name}</h3>
           {/* <h3>{product.price}</h3> */}
         </div>
 
@@ -17,14 +17,14 @@ function OneProduct({ product, addItem, inCart }) {
         <div className="productAdd">
           {inCart === 0 ? (
             <>
-              <h3>Quick add</h3>
+              <h3 className="grid-item">Quick add</h3>
               <button onClick={() => addItem(product.name, product.id)}>
-                <GoPlus />
+                <GoPlus className="grid-item" />
               </button>
             </>
           ) : (
             <>
-              <h4>Amount: {product.amount}</h4>
+              <h4>Amount:</h4>
             </>
           )}
         </div>

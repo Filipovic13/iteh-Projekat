@@ -74,13 +74,18 @@ html,
   display: flex;
   flex-direction: row;
   margin: 25px;
+  background-color: #8e9598;
+  height: 100vh;
+  padding: 20px;
 }
 
 .product {
   border-style: solid;
+  padding: 10px;
   border-width: 2px;
   border-color: rgb(211, 211, 211);
   max-width: 350px;
+  max-height: 500px;
   margin: 50px;
 }
 
@@ -96,13 +101,18 @@ html,
 }
 
 .productAdd {
-  display: flex;
   margin-left: 23px;
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 100px;
   height: 62px;
   width: 277px;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .productNamePrice {
@@ -123,4 +133,5 @@ html,
 
 .hr {
   width: 250px;
+  margin-left: 20px;
 }
