@@ -9,6 +9,7 @@ import Naslovna from "./components/Naslovna";
 import Products from "./components/Products";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Stats from "./components/Stats";
 
 function App() {
   const [token, setToken] = useState();
@@ -68,6 +69,7 @@ function App() {
         <Route path="/" element={<NavBar token={token} />}>
         <Route exact path="/" element={<Naslovna />}/>
           <Route path="tournaments" element={<TournamentsPage />} />
+          <Route path="/stats" element={<Stats />} />
           <Route
             path="eventRegistration"
             element={<EventRegistration loggedInUser={loggedInUser} />}
