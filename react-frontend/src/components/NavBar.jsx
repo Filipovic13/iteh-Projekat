@@ -52,7 +52,17 @@ function NavBar({ token, addLoggedData }) {
               </Link>
               <Link className="nav-link" to="/tournaments">
                 Tournaments
+<<<<<<< HEAD
               </Link>
+=======
+              </a>
+              <a className="nav-link" aria-current="page" href="/stats">
+                Stats
+              </a>
+              <a className="nav-link" aria-current="page" href="/contact">
+                Contact
+              </a>
+>>>>>>> 07a673ce0d62796f80c28c5d2b0e37d94dd366de
               {token == null ? (
                 <Link className="nav-link" to="/login">
                   Login
@@ -62,6 +72,7 @@ function NavBar({ token, addLoggedData }) {
                   Logout
                 </Link>
               )}
+              
             </div>
           </div>
         </div>

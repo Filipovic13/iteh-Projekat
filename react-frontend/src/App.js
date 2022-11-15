@@ -6,8 +6,16 @@ import Naslovna from "./components/Naslovna";
 import TournamentsPage from "./components/TournamentsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EventRegistration from "./components/EventRegistration";
+import Naslovna from "./components/Naslovna";
 import Products from "./components/Products";
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Stats from "./components/Stats";
+import ContactPage from './components/ContactPage'
+>>>>>>> 07a673ce0d62796f80c28c5d2b0e37d94dd366de
 
 function App() {
   const [token, setToken] = useState();
@@ -57,12 +65,17 @@ function App() {
         <Route path="/" element={<NavBar token={token} />}>
           <Route exact path="/" element={<Naslovna />} />
           <Route path="tournaments" element={<TournamentsPage />} />
+          <Route path="/stats" element={<Stats />} />
+          <Route path="/contact" element={<ContactPage />} />
+
           <Route
             path="eventRegistration"
             element={<EventRegistration loggedInUser={loggedInUser} />}
           />
           <Route path="products" element={<Products />} />
         </Route>
+        
+        
       </Routes>
     </BrowserRouter>
   );
