@@ -10,6 +10,7 @@ import Products from "./components/Products";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Stats from "./components/Stats";
+import ContactPage from './components/ContactPage'
 
 function App() {
   const [token, setToken] = useState();
@@ -70,6 +71,8 @@ function App() {
         <Route exact path="/" element={<Naslovna />}/>
           <Route path="tournaments" element={<TournamentsPage />} />
           <Route path="/stats" element={<Stats />} />
+          <Route path="/contact" element={<ContactPage />} />
+
           <Route
             path="eventRegistration"
             element={<EventRegistration loggedInUser={loggedInUser} />}
@@ -79,6 +82,8 @@ function App() {
             element={<Products products={products} addItem={addItem} />}
           />
         </Route>
+        
+        
       </Routes>
     </BrowserRouter>
   );

@@ -56,6 +56,9 @@ function NavBar({ token, addLoggedData }) {
               <a className="nav-link" aria-current="page" href="/stats">
                 Stats
               </a>
+              <a className="nav-link" aria-current="page" href="/contact">
+                Contact
+              </a>
               {token == null ? (
                 <a className="nav-link" href="/login">
                   Login
@@ -65,6 +68,7 @@ function NavBar({ token, addLoggedData }) {
                   Logout
                 </a>
               )}
+              
             </div>
           </div>
         </div>
