@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 function NavBar({ token, addLoggedData }) {
   function handleLogout() {
@@ -27,13 +27,13 @@ function NavBar({ token, addLoggedData }) {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img
               src="https://t4.ftcdn.net/jpg/04/43/34/03/360_F_443340374_QqpPwEqSCgChDSJFJNt2bTu2XTe4fISp.jpg"
               alt="belt"
               style={{ width: 100 }}
             />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -47,20 +47,20 @@ function NavBar({ token, addLoggedData }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link" aria-current="page" href="/products">
+              <Link className="nav-link" aria-current="page" to="/products">
                 Shop
-              </a>
-              <a className="nav-link" href="/tournaments">
+              </Link>
+              <Link className="nav-link" to="/tournaments">
                 Tournaments
-              </a>
+              </Link>
               {token == null ? (
-                <a className="nav-link" href="/login">
+                <Link className="nav-link" to="/login">
                   Login
-                </a>
+                </Link>
               ) : (
-                <a className="nav-link" href="/" onClick={handleLogout}>
+                <Link className="nav-link" to="/" onClick={handleLogout}>
                   Logout
-                </a>
+                </Link>
               )}
             </div>
           </div>
