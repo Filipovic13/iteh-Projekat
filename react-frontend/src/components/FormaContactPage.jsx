@@ -39,11 +39,11 @@ function FormaContactPage(props) {
             <form id="formacontact_div">
             <div className="input-container">
                     <label>Name: </label>
-                    <input type={'text'} className="form-control mt-2 mb-2" value={name} onChange={handleNameInput} />
+                    <input type={'text'} className="form-control mt-2 mb-2" value={name} onChange={handleNameInput} required />
                 </div>
                 <div className="input-container">
                     <label>Phone number: </label>
-                    <input type={'text'} className="form-control mt-2 mb-2" value={phoneNumber} onChange={handlePhoneNumberInput} />
+                    <input type={'text'} className="form-control mt-2 mb-2" value={phoneNumber} onChange={handlePhoneNumberInput} required/>
                 </div>
                 <div className="input-container">
                     <label>Message: </label>

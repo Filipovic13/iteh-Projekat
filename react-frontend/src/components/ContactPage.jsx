@@ -10,7 +10,7 @@ function ContactPage() {
     return (
         
         <div className="contactpage_div">
-            <h1 id='contact-us'>Contact us</h1>
+            <h1 id='contact-us'><center>Contact us</center></h1>
             <FormaContactPage send={send} />
         </div>
     );

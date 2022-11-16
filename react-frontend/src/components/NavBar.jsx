@@ -53,6 +53,9 @@ function NavBar({ token, addLoggedData }) {
               <a className="nav-link" href="/tournaments">
                 Tournaments
               </a>
+              <a className="nav-link" aria-current="page" href="/rating">
+                Voting
+              </a>
               <a className="nav-link" aria-current="page" href="/stats">
                 Stats
               </a>

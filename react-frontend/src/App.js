@@ -11,6 +11,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Stats from "./components/Stats";
 import ContactPage from './components/ContactPage'
+import Rating from './components/Rating'
 
 function App() {
   const [token, setToken] = useState();
@@ -70,6 +71,7 @@ function App() {
         <Route path="/" element={<NavBar token={token} />}>
         <Route exact path="/" element={<Naslovna />}/>
           <Route path="tournaments" element={<TournamentsPage />} />
+          <Route path="/rating" element={<Rating />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/contact" element={<ContactPage />} />
 
