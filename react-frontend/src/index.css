@@ -235,8 +235,6 @@ h5 {
   border-radius: 3px;
   border-width: 0px;
 }
-<<<<<<< HEAD
-=======
 
 .label {
   color: black;
@@ -248,15 +246,11 @@ h5 {
   gap: 8px;
   margin: 5px;
   align-items: center;
-  
-
-
-
 }
-input[type='text'] {
+input[type="text"] {
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-} 
+}
 
 .button {
   background-color: #4d79ff; /* Green */
@@ -271,6 +265,4 @@ input[type='text'] {
   margin: 4px 2px;
   cursor: pointer;
   overflow: hidden;
-
 }
->>>>>>> 07a673ce0d62796f80c28c5d2b0e37d94dd366de
