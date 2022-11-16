@@ -1,23 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import OneProduct from "./OneProduct";
 
-function Products({ products, addItem }) {
+function Products() {
+  //////////////////////
+  const [products, setProducts] = useState();
+  useEffect(() => {
+    if (products == null) {
+      axios.get("api/products").then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
+      });
+    }
+  }, [products]);
+  //////////////////////////////////////////////
+
   return (
-    <div className="products">
-      <h3>Shop</h3>
-      {products == null ? (
-        <></>
-      ) : (
-        products.map((prod) => (
-          <OneProduct
-            product={prod}
-            key={prod.id}
-            addItem={addItem}
-            inCart={0}
-          />
-        ))
-      )}
-    </div>
+    <>
+      <div className="products">
+        <h3>Shop</h3>
+        {products == null ? (
+          <></>
+        ) : (
+          products.map((prod) => (
+            <OneProduct product={prod} key={prod.id} inCart={0} />
+          ))
+        )}
+      </div>
+    </>
   );
 }
 

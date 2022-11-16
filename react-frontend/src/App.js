@@ -2,10 +2,10 @@ import "./App.css";
 import LoginPage from "./components/LoginPage";
 import RegisterPage from "./components/RegisterPage";
 import NavBar from "./components/NavBar";
+import Naslovna from "./components/Naslovna";
 import TournamentsPage from "./components/TournamentsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EventRegistration from "./components/EventRegistration";
-import Naslovna from "./components/Naslovna";
 import Products from "./components/Products";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -29,34 +29,24 @@ function App() {
     setToken(auth_token);
   }
   /////////////////////////////////////////////
-  const [cartNum, increaseCartNum] = useState(0);
-  const [cartItems, addToCart] = useState([]);
+  // const [cartNum, increaseCartNum] = useState(0);
+  // const [cartItems, addToCart] = useState([]);
 
-  const [products, setProducts] = useState();
-  useEffect(() => {
-    if (products == null) {
-      axios.get("api/products").then((res) => {
-        console.log(res.data);
-        setProducts(res.data);
-      });
-    }
-  }, [products]);
-  //////////////////////////////////////////////
-  function refreshCart() {
-    let newItems = products.filter((prod) => prod.amount > 0);
-    addToCart(newItems);
-  }
-  function addItem(name, id) {
-    console.log("Dodat proizvod: " + name);
-    increaseCartNum(cartNum + 1);
-    // console.log(cartNum);
-    products.forEach((prod) => {
-      if (prod.id === id) {
-        prod.amount++;
-      }
-    });
-    refreshCart();
-  }
+  // function refreshCart() {
+  //   let newItems = products.filter((prod) => prod.amount > 0);
+  //   addToCart(newItems);
+  // }
+  // function addItem(name, id) {
+  //   console.log("Dodat proizvod: " + name);
+  //   increaseCartNum(cartNum + 1);
+  //   // console.log(cartNum);
+  //   products.forEach((prod) => {
+  //     if (prod.id === id) {
+  //       prod.amount++;
+  //     }
+  //   });
+  //   refreshCart();
+  // }
 
   return (
     <BrowserRouter className="App">
@@ -69,7 +59,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/" element={<NavBar token={token} />}>
-        <Route exact path="/" element={<Naslovna />}/>
+          <Route exact path="/" element={<Naslovna />} />
           <Route path="tournaments" element={<TournamentsPage />} />
           <Route path="/rating" element={<Rating />} />
           <Route path="/stats" element={<Stats />} />
@@ -79,13 +69,8 @@ function App() {
             path="eventRegistration"
             element={<EventRegistration loggedInUser={loggedInUser} />}
           />
-          <Route
-            path="products"
-            element={<Products products={products} addItem={addItem} />}
-          />
+          <Route path="products" element={<Products />} />
         </Route>
-        
-        
       </Routes>
     </BrowserRouter>
   );

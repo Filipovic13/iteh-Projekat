@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AdminAuthController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
@@ -24,32 +25,29 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('tournaments', TournamentController::class);
 
-Route::resource('users', UserController::class);
-//Route::resource('registrations', RegistrationController::class);
-
-//Route::get('/users/{id}/registrations', [UserRegistrationController::class, 'index'])->name('users.registration.index');
-Route::resource('users.registrations', UserRegistrationController::class)->only(['index']);
-
-
+//Public routes
 Route::post('/register',[AuthController::class,'register']);
+//Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AdminAuthController::class, 'login']);
 
-Route::post('/login', [AuthController::class, 'login']);
 
-
-Route::group(['middleware'=>['auth:sanctum'] ], function(){
-
-    Route::get('/profile', function(Request $request){
-        return auth()->user();
-    });
-
-    Route::resource('registrations', RegistrationController::class)->only(['update','store','destroy']);
-
-    Route::post('/logout', [AuthController::class, 'logout']);
-});
-
-Route::resource('registrations', RegistrationController::class)->only(['index']);
-
+//Route::resource('registrations', RegistrationController::class);
+//Route::get('/users/{id}/registrations', [UserRegistrationController::class, 'index'])->name('users.registration.index');
+Route::get('/  ', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::resource('tournaments', TournamentController::class)->only('index');
+
+
+//User accessible routes
+Route::group(['middleware'=>['auth:sanctum'] ], function(){
+
+    Route::resource('registrations', RegistrationController::class);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    
+ //   Route::resource('users.registrations', UserRegistrationController::class)->only(['index']);
+});
+
+
+require __DIR__ . '/admin.php';

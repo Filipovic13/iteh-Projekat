@@ -29,10 +29,11 @@ class DatabaseSeeder extends Seeder
         Registration::truncate();
         Tournament::truncate();
         User::truncate();
-
+        
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();
         $user3 = User::factory()->create();
+     
 
         $tournament1 = Tournament::create(
             [
@@ -107,19 +108,23 @@ class DatabaseSeeder extends Seeder
 
 
         $prod1 = Product::create([
-            'name' => 'blue_venom_kimono',
-            'image_url' => 'https://fightshop.rs/wp-content/uploads/2019/11/venum-03057-018-a0-venum-03057-018-a0-galery_image_1-bjj_gi_contender_2_0_blue_navy_1500_01.jpg'
+            'name' => 'Blue venom kimono',
+            'image_url' => 'https://fightshop.rs/wp-content/uploads/2019/11/venum-03057-018-a0-venum-03057-018-a0-galery_image_1-bjj_gi_contender_2_0_blue_navy_1500_01.jpg',
+            'price'=>12990,
         ]);
 
         $prod2 = Product::create([
-            'name' => 'grey_venom_kimono',
-            'image_url' => 'https://fightshop.rs/wp-content/uploads/2020/03/venum-03057-010-a0-venum-03057-010-a0-galery_image_1-bjj_gi_contender_2_0_grey_1500_01.jpg'
+            'name' => 'Grey venom kimono',
+            'image_url' => 'https://fightshop.rs/wp-content/uploads/2020/03/venum-03057-010-a0-venum-03057-010-a0-galery_image_1-bjj_gi_contender_2_0_grey_1500_01.jpg',
+            'price'=>11990,
         ]);
 
-        $prod2 = Product::create([
-            'name' => 'black_venom_kimono',
-            'image_url' => 'https://fightshop.rs/wp-content/uploads/2018/01/bjj_gi_contender_2_0_black_1500_01_1_4.jpg'
+        $prod3 = Product::create([
+            'name' => 'Black venom kimono',
+            'image_url' => 'https://fightshop.rs/wp-content/uploads/2018/01/bjj_gi_contender_2_0_black_1500_01_1_4.jpg',
+            'price'=>10500,
         ]);
+
 
 
 

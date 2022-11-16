@@ -4,17 +4,15 @@
 }
 
 
-
 body {
   background-color: #282c34 !important;
-  background-image:url("1.jpg");
+  background-image: url("1.jpg");
   min-height: 100vh;
   display: flex;
   justify-content: space-between;
   font-weight: 400;
   font-family: "Fira Sans", sans-serif;
   color: #0f0d0d;
-
 }
 h1,
 h2,
@@ -78,10 +76,13 @@ html,
 .products {
   display: flex;
   flex-direction: row;
-  margin: 25px;
-  background-color: #8e9598;
-  height: 100vh;
-  padding: 20px;
+  margin-left: 50px;
+  margin-right: 30px;
+}
+
+.sort {
+  margin-left: 80px;
+  margin-top: 33px;
 }
 
 .product {
@@ -94,10 +95,12 @@ html,
   margin: 50px;
 }
 
-.product button {
-  padding: 0;
+.sort {
+  width: 300px;
   border: none;
-  background: none;
+  background-color: #ffffff;
+  color: black;
+  margin: 50px;
 }
 
 .product img {
@@ -114,6 +117,14 @@ html,
   width: 277px;
 }
 
+.productAdd button {
+  background-color: #ffffff;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  align-self: center;
+}
+
 .grid-item {
   display: flex;
   align-items: center;
@@ -122,11 +133,12 @@ html,
 
 .productNamePrice {
   display: flex;
+  margin-top: 23px;
   margin-left: 23px;
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 100px;
-  height: 87px;
+  grid-column-gap: 10px;
+  height: 50px;
   width: 277px;
 }
 
@@ -141,49 +153,53 @@ html,
   margin-left: 20px;
 }
 
-
 h4 {
   color: rgb(255, 255, 255);
-
 }
 h2 {
   color: rgb(255, 255, 255);
-  text-shadow: -1px -1px rgb(81, 81, 81), 1px 1px rgb(179, 179, 179), -3px 0 4px rgb(31, 31, 31);
-
+  text-shadow: -1px -1px rgb(81, 81, 81), 1px 1px rgb(179, 179, 179),
+    -3px 0 4px rgb(31, 31, 31);
 }
 
 h5 {
-  font-family:  monospace;
+  font-family: monospace;
   color: rgb(65, 65, 65);
   text-align: justify;
-
 }
 
 .typewriter h1 {
   color: #fff;
   font-family: monospace;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 3.5s steps(30, end),
-    blink-caret .5s step-end infinite;
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
 }
 
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: grey }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: grey;
+  }
 }
-.btn1{
+.btn1 {
   background-color: rgb(255, 255, 255);
   color: black;
   padding-top: 10px;
@@ -196,39 +212,29 @@ h5 {
   margin-bottom: -130px;
   border-radius: 3px;
   border-width: 0px;
-  width:50px;
-
-
-
+  width: 50px;
 }
-.btn2{
+.btn2 {
   background-color: rgb(255, 255, 255);
   color: black;
-  width:50px;
+  width: 50px;
   border-radius: 3px;
   border-width: 0px;
-
-
-
 }
 
-
-.btn3{
+.btn3 {
   background-color: rgb(255, 255, 255);
   color: black;
-  width:50px;
+  width: 50px;
   border-radius: 3px;
   border-width: 0px;
-
-
 }
-.btn4{
+.btn4 {
   background-color: rgb(255, 255, 255);
   color: black;
-  width:50px;
+  width: 50px;
   border-radius: 3px;
   border-width: 0px;
-
 }
 
 .label {
@@ -241,15 +247,11 @@ h5 {
   gap: 8px;
   margin: 5px;
   align-items: center;
-  
-
-
-
 }
-input[type='text'] {
+input[type="text"] {
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-} 
+}
 
 .button {
   background-color: #4d79ff; /* Green */
@@ -262,56 +264,9 @@ input[type='text'] {
   display: inline-block;
   font-size: 17px;
   margin: 4px 2px;
-  cursor: pointer;
   overflow: hidden;
 
 }
-
-.input-containerr {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 5px;
-  align-items: center;
-  
-
-
-
-}
-input[type='text'] {
-  height: 25px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-} 
-
-.photo {
-  height: 200px;
-  width: 400px;
-  border: 3px solid #ddd;
-  border-radius: 20px;
- 
-}
-
-.title {
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 5px;
-  align-items: center;
-  
-
-
-
-}
-.star {
-  color: #ff9933;
-  cursor: pointer;
-}
-
 .languages {
   height: 500px;
   width: 500px;

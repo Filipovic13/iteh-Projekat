@@ -1,15 +1,15 @@
 import React from "react";
 import { GoPlus } from "react-icons/go";
 
-function OneProduct({ product, addItem, inCart }) {
+function OneProduct({ product, inCart }) {
   return (
     <div className="product">
       <img src={product.image_url} alt="ItemPhoto" />
 
-      <div className="infoWrapper">
+      <div>
         <div className="productNamePrice">
-          <h3 className="grid-item">{product.name}</h3>
-          {/* <h3>{product.price}</h3> */}
+          <p>{product.name}</p>
+          <p>{product.price}</p>
         </div>
 
         <hr className="hr" />
@@ -18,7 +18,7 @@ function OneProduct({ product, addItem, inCart }) {
           {inCart === 0 ? (
             <>
               <h3 className="grid-item">Quick add</h3>
-              <button onClick={() => addItem(product.name, product.id)}>
+              <button>
                 <GoPlus className="grid-item" />
               </button>
             </>
