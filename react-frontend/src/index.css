@@ -117,11 +117,8 @@ html,
 }
 
 .productAdd button {
-  background-color: #ffffff;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  align-self: center;
+  border-radius: 10px;
+  height: 33px;
 }
 
 .grid-item {
@@ -265,4 +262,15 @@ input[type="text"] {
   margin: 4px 2px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.cart {
+  float: right;
+  color: black;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: row;
+  margin: 25px;
 }
