@@ -15,8 +15,5 @@ class Tournament extends Model
         return $this->hasMany(Tournament::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+   
 }
