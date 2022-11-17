@@ -42,7 +42,6 @@ class RegistrationController extends Controller
             'category'=> 'required|string',
             'belt'=> 'required|string',
             'event_name'=> 'required|string',
-            'user_id'=> 'required|string',
             'tournament_id'=> 'required|string',
         ]);
 
@@ -56,7 +55,6 @@ class RegistrationController extends Controller
             'category'=> $request->category,
             'belt'=> $request->belt,
             'event_name'=> $request->event_name,
-            'user_id'=> $request->user_id,
             'tournament_id'=> $request->tournament_id
         ]);
 
@@ -71,7 +69,6 @@ class RegistrationController extends Controller
             'category'=> 'required|string',
             'belt'=> 'required|string',
             'event_name'=> 'required|string',
-            'user_id'=> 'required|string',
             'tournament_id'=> 'required|string',
         ]);
 
@@ -84,7 +81,6 @@ class RegistrationController extends Controller
         $registration->category = $request->category;
         $registration->belt = $request->belt;
         $registration->event_name = $request->event_name;
-        $registration->user_id = $request->user_id;
         $registration->tournament_id = $request->tournament_id;
 
         $registration->save();

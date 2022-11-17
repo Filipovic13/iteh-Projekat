@@ -24,7 +24,7 @@ class RegistrationResource extends JsonResource
             'belt'=>$this->resource->belt,
             'event_name'=>$this->resource->event_name,
             'tournament'=> new TournamentResource($this->resource->tournament),
-            'user'=> new UserResource($this->resource->user)
+            // 'user'=> new UserResource($this->resource->user)
         ];
     }
 }
