@@ -15,7 +15,8 @@ Route::prefix('admin')->group( function(){
     Route::post('login', [AdminAuthController::class, 'login']);
 
     Route::middleware('auth:admin,api-admin')->group(function(){
-        Route::resource('tournaments', TournamentController::class)->only(['index','store','update','destroy']);
+        Route::resource('tournaments', TournamentController::class)->only(['store','update','destroy']);
+        Route::resource('registrations', TournamentController::class)->only(['index','destroy']);
         Route::post('logout', [AdminAuthController::class, 'logout']);
       
     });
