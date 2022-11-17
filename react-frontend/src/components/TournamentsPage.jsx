@@ -19,9 +19,27 @@ function TournamentsPage() {
 
   useEffect(() => {
     const loadData = async () => {
-      const response = await axios.get("api/tournaments");
-      console.log(response.data.tournaments);
-      setData(response.data.tournaments);
+      // const response = await axios.get("api/tournaments");
+      // console.log(response.data.tournaments);
+      // setData(response.data.tournaments);
+
+      var config = {
+        method: "get",
+        url: "api/tournaments",
+        headers: {
+          Authorization:
+            "Bearer " + window.sessionStorage.getItem("auth_token"),
+        },
+      };
+
+      axios(config)
+        .then(function (response) {
+          //console.log(JSON.stringify(response.data));
+          setData(response.data.tournaments);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     };
 
     loadData();
