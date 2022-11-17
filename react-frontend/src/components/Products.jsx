@@ -2,17 +2,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import OneProduct from "./OneProduct";
 
-function Products() {
+function Products({ products, addItem }) {
   //////////////////////
-  const [products, setProducts] = useState();
-  useEffect(() => {
-    if (products == null) {
-      axios.get("api/products").then((res) => {
-        console.log(res.data);
-        setProducts(res.data);
-      });
-    }
-  }, [products]);
+  // const [products, setProducts] = useState();
+  // useEffect(() => {
+  //   if (products == null) {
+  //     axios.get("api/products").then((res) => {
+  //       console.log(res.data);
+  //       setProducts(res.data);
+  //     });
+  //   }
+  // }, [products]);
   //////////////////////////////////////////////
 
   return (
@@ -23,7 +23,12 @@ function Products() {
           <></>
         ) : (
           products.map((prod) => (
-            <OneProduct product={prod} key={prod.id} inCart={0} />
+            <OneProduct
+              product={prod}
+              key={prod.id}
+              addItem={addItem}
+              inCart={0}
+            />
           ))
         )}
       </div>
