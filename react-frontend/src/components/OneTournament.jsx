@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function OneTournament({ tournament }) {
   let navigate = useNavigate();
   function handleRegClick(id, event_name) {
-    navigate("/eventRegistration", {
+    navigate("/registrations", {
       state: { id: id, event_name: event_name },
     });
   }
