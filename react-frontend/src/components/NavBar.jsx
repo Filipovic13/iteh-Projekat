@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { Outlet, Link } from "react-router-dom";
+import { FiShoppingCart } from "react-icons/fi";
 
-function NavBar({ token, addLoggedData }) {
+function NavBar({ token, addLoggedData, cartNum }) {
   function handleLogout() {
     var config = {
       method: "post",
@@ -50,9 +51,17 @@ function NavBar({ token, addLoggedData }) {
               <Link className="nav-link" aria-current="page" to="/products">
                 Shop
               </Link>
-              <Link className="nav-link" to="/tournaments">
-                Tournaments
+              <Link className="nav-link" to="/cart">
+                Cart
               </Link>
+              {token == null ? (
+                <></>
+              ) : (
+                <Link className="nav-link" to="/tournaments">
+                  Tournaments
+                </Link>
+              )}
+
               <Link className="nav-link" aria-current="page" to="/stats">
                 Stats
               </Link>
@@ -68,6 +77,12 @@ function NavBar({ token, addLoggedData }) {
                   Logout
                 </Link>
               )}
+              <div className="cart">
+                {" "}
+                <FiShoppingCart />
+                &nbsp;
+                {cartNum}
+              </div>
             </div>
           </div>
         </div>
