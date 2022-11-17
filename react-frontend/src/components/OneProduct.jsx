@@ -1,7 +1,6 @@
-import React from "react";
-import { GoPlus } from "react-icons/go";
+import React, { useState } from "react";
 
-function OneProduct({ product, inCart }) {
+function OneProduct({ product, addItem, inCart }) {
   return (
     <div className="product">
       <img src={product.image_url} alt="ItemPhoto" />
@@ -18,13 +17,13 @@ function OneProduct({ product, inCart }) {
           {inCart === 0 ? (
             <>
               <h3 className="grid-item">Quick add</h3>
-              <button>
-                <GoPlus className="grid-item" />
+              <button onClick={() => addItem(product.name, product.id)}>
+                Add
               </button>
             </>
           ) : (
             <>
-              <h4>Amount:</h4>
+              <h4>Amount:{product.amount}</h4>
             </>
           )}
         </div>
