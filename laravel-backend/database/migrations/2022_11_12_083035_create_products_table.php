@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image_url');
             $table->decimal('price',7,0);
+            $table->integer('amount');
             $table->timestamps();
         });
     }
