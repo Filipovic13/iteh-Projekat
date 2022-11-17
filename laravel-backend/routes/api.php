@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AdminAuthController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\TournamentController;
@@ -28,8 +29,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Public routes
 Route::post('/register',[AuthController::class,'register']);
-//Route::post('/login', [AuthController::class, 'login']);
-Route::post('/login', [AdminAuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
+
+
 
 
 //Route::resource('registrations', RegistrationController::class);
@@ -37,15 +39,21 @@ Route::post('/login', [AdminAuthController::class, 'login']);
 Route::get('/  ', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::resource('tournaments', TournamentController::class)->only('index');
+Route::get('/users', [RegistrationController::class, 'index']);
+Route::get('/users/{id}', [RegistrationController::class, 'show']);
+Route::post('/cart', [CartController::class, 'store']);
+
 
 
 //User accessible routes
 Route::group(['middleware'=>['auth:sanctum'] ], function(){
 
+    Route::resource('tournaments', TournamentController::class)->only(['index','store']);
     Route::resource('registrations', RegistrationController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
-    
+    Route::get('/users', [RegistrationController::class, 'index']);
+    Route::get('/users/{id}', [RegistrationController::class, 'show']);
+
  //   Route::resource('users.registrations', UserRegistrationController::class)->only(['index']);
 });
 
