@@ -10,8 +10,13 @@ import Products from "./components/Products";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Stats from "./components/Stats";
+<<<<<<< HEAD
 import ContactPage from "./components/ContactPage";
 import { Cart } from "./components/Cart";
+=======
+import ContactPage from './components/ContactPage'
+import Rating from './components/Rating'
+>>>>>>> 81509e472cc8534be9face44ac0c19b6c5abbbce
 
 function App() {
   const [token, setToken] = useState();
@@ -74,6 +79,7 @@ function App() {
         <Route path="/" element={<NavBar token={token} cartNum={cartNum} />}>
           <Route exact path="/" element={<Naslovna />} />
           <Route path="tournaments" element={<TournamentsPage />} />
+          <Route path="/rating" element={<Rating />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/contact" element={<ContactPage />} />
 

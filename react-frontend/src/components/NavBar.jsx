@@ -51,6 +51,7 @@ function NavBar({ token, addLoggedData, cartNum }) {
               <Link className="nav-link" aria-current="page" to="/products">
                 Shop
               </Link>
+<<<<<<< HEAD
               <Link className="nav-link" to="/cart">
                 Cart
               </Link>
@@ -63,8 +64,17 @@ function NavBar({ token, addLoggedData, cartNum }) {
               )}
 
               <Link className="nav-link" aria-current="page" to="/stats">
+=======
+              <Link className="nav-link" to="/tournaments">
+                Tournaments
+                </Link>
+              <a className="nav-link" aria-current="page" href="/rating">
+                Voting
+                </a>
+              <a className="nav-link" aria-current="page" href="/stats">
+>>>>>>> 81509e472cc8534be9face44ac0c19b6c5abbbce
                 Stats
-              </Link>
+              </a>
               <Link className="nav-link" aria-current="page" to="/contact">
                 Contact
               </Link>
