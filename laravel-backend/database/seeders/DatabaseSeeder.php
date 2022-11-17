@@ -73,7 +73,6 @@ class DatabaseSeeder extends Seeder
             'category' => 'lightweight',
             'belt' => 'blue',
             'event_name' => 'ADCC Slovak open',
-            'user_id' => $user1->id,
             'tournament_id' => $tournament3->id
         ]);
         $reg2 = Registration::create([
@@ -82,7 +81,6 @@ class DatabaseSeeder extends Seeder
             'category' => 'lightweight',
             'belt' => 'blue',
             'event_name' => 'ADCC Slovak open',
-            'user_id' => $user1->id,
             'tournament_id' => $tournament3->id
         ]);
         $reg3 = Registration::create([
@@ -91,7 +89,6 @@ class DatabaseSeeder extends Seeder
             'category' => 'heavyweight',
             'belt' => 'purple',
             'event_name' => '8th Serbian Grappling cup',
-            'user_id' => $user2->id,
             'tournament_id' => $tournament2->id
         ]);
         $reg4 = Registration::create([
@@ -100,7 +97,6 @@ class DatabaseSeeder extends Seeder
             'category' => 'heavyweight',
             'belt' => 'black',
             'event_name' => 'Old bridge Mostar open',
-            'user_id' => $user3->id,
             'tournament_id' => $tournament1->id
         ]);
 
@@ -111,18 +107,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'Blue venom kimono',
             'image_url' => 'https://fightshop.rs/wp-content/uploads/2019/11/venum-03057-018-a0-venum-03057-018-a0-galery_image_1-bjj_gi_contender_2_0_blue_navy_1500_01.jpg',
             'price'=>12990,
+            'amount'=>0,
         ]);
 
         $prod2 = Product::create([
             'name' => 'Grey venom kimono',
             'image_url' => 'https://fightshop.rs/wp-content/uploads/2020/03/venum-03057-010-a0-venum-03057-010-a0-galery_image_1-bjj_gi_contender_2_0_grey_1500_01.jpg',
             'price'=>11990,
+            'amount'=>0,
         ]);
 
         $prod3 = Product::create([
             'name' => 'Black venom kimono',
             'image_url' => 'https://fightshop.rs/wp-content/uploads/2018/01/bjj_gi_contender_2_0_black_1500_01_1_4.jpg',
             'price'=>10500,
+            'amount'=>0,
         ]);
 
 
