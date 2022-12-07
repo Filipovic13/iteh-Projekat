@@ -1,9 +1,10 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
-function LoginPage({ addToken, setLoggedId, loggedId }) {
+function LoginPage({ addToken, setRole }) {
   //////////////////////////
   const [userData, setUserData] = useState({
     email: "",
@@ -28,13 +29,19 @@ function LoginPage({ addToken, setLoggedId, loggedId }) {
         if (res.data.success === true) {
           let token = res.data.access_token;
           window.sessionStorage.setItem("auth_token", res.data.access_token);
-          addToken(token);
+          window.sessionStorage.setItem("user_id", res.data.user_id);
 
-          let userId = res.data.id;
-          //console.log(userId);
-          //setLoggedId(userId);
-          //console.log(loggedId);
-          navigate("/");
+          addToken(token);
+          setRole(res.data.role);
+
+          swal("Logged in succesfully", res.data.message, "success");
+          if (res.data.role === "admin") {
+            navigate("/admin");
+          } else {
+            navigate("/");
+          }
+        } else {
+          swal("Please try again", res.data.message, "warning");
         }
       })
       .catch((e) => {
