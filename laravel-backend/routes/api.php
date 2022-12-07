@@ -1,13 +1,9 @@
 <?php
-
-use App\Http\Controllers\API\AdminAuthController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\TournamentController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserRegistrationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +32,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //Route::resource('registrations', RegistrationController::class);
 //Route::get('/users/{id}/registrations', [UserRegistrationController::class, 'index'])->name('users.registration.index');
-Route::get('/  ', [ProductController::class, 'index']);
+//Route::get('/  ', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/users', [RegistrationController::class, 'index']);
@@ -48,9 +44,9 @@ Route::post('/cart', [CartController::class, 'store']);
 //User accessible routes
 Route::group(['middleware'=>['auth:sanctum'] ], function(){
 
+    Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('tournaments', TournamentController::class)->only(['index','store']);
     Route::resource('registrations', RegistrationController::class);
-    Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/users', [RegistrationController::class, 'index']);
     Route::get('/users/{id}', [RegistrationController::class, 'show']);
 
