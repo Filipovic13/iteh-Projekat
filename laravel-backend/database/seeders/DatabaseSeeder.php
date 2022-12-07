@@ -4,11 +4,13 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Admin;
 use App\Models\Product;
 use App\Models\Registration;
 use App\Models\Tournament;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,12 +30,33 @@ class DatabaseSeeder extends Seeder
 
         Registration::truncate();
         Tournament::truncate();
+        Product::truncate();
         User::truncate();
+    
         
+        $admin = User::create([
+            'email'=>'admin@email.com',
+            'password'=>Hash::make('admin123'),
+            'role'=>'admin',
+            'email_verified_at'=> now(),
+        ]);
+
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();
         $user3 = User::factory()->create();
+
+        $user4= User::create([
+            'name'=>'Filip',
+            'surname'=>'Visnjic',            
+            'email'=>'fica@email.com',                 
+            'country'=>'Bosna and Hercegovina',            
+            'city'=>'Donja Trnova',            
+            'club'=>'Lutador',
+            'email_verified_at'=> now(),
+            'password'=>Hash::make('cofii123'),
+        ]);
      
+        
 
         $tournament1 = Tournament::create(
             [
