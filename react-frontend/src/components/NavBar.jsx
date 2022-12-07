@@ -2,9 +2,14 @@ import React from "react";
 import axios from "axios";
 import { Outlet, Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
-function NavBar({ token, addLoggedData, cartNum }) {
-  function handleLogout() {
+function NavBar({ token, cartNum, setToken }) {
+  let navigate = useNavigate();
+
+  function handleLogout(e) {
+    e.preventDefault();
     var config = {
       method: "post",
       url: "api/logout",
@@ -16,8 +21,12 @@ function NavBar({ token, addLoggedData, cartNum }) {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        window.sessionStorage.setItem("auth_token", null);
-        addLoggedData(null);
+        window.sessionStorage.removeItem("auth_token");
+        window.sessionStorage.removeItem("user_id");
+        setToken(null);
+
+        swal("Success", response.data.message, "success");
+        navigate("/");
       })
       .catch(function (error) {
         console.log(error);
@@ -48,33 +57,27 @@ function NavBar({ token, addLoggedData, cartNum }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <Link className="nav-link" aria-current="page" to="/products">
-                Shop
-              </Link>
-<<<<<<< HEAD
-              <Link className="nav-link" to="/cart">
-                Cart
-              </Link>
-              {token == null ? (
-                <></>
+              {token ? (
+                <Link className="nav-link" aria-current="page" to="/products">
+                  Shop
+                </Link>
               ) : (
+                <></>
+              )}
+              {token ? (
                 <Link className="nav-link" to="/tournaments">
                   Tournaments
                 </Link>
+              ) : (
+                <></>
               )}
 
-              <Link className="nav-link" aria-current="page" to="/stats">
-=======
-              <Link className="nav-link" to="/tournaments">
-                Tournaments
-                </Link>
-              <a className="nav-link" aria-current="page" href="/rating">
+              <Link className="nav-link" aria-current="page" to="/rating">
                 Voting
-                </a>
-              <a className="nav-link" aria-current="page" href="/stats">
->>>>>>> 81509e472cc8534be9face44ac0c19b6c5abbbce
+              </Link>
+              <Link className="nav-link" aria-current="page" to="/stats">
                 Stats
-              </a>
+              </Link>
               <Link className="nav-link" aria-current="page" to="/contact">
                 Contact
               </Link>
@@ -83,7 +86,7 @@ function NavBar({ token, addLoggedData, cartNum }) {
                   Login
                 </Link>
               ) : (
-                <Link className="nav-link" to="/" onClick={handleLogout}>
+                <Link className="nav-link" to="/login" onClick={handleLogout}>
                   Logout
                 </Link>
               )}
