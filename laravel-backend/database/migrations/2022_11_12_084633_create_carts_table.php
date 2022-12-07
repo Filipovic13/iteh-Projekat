@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('amount');
+            $table->double('cena');
+            $table->string('amount')->default(0);
+            $table->foreignId('user_id'); 
             $table->timestamps();
         });
     }
