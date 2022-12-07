@@ -3,10 +3,13 @@
   box-sizing: border-box;
 }
 
-
 body {
-  background-color: #282c34 !important;
-  background-image: url("1.jpg");
+  background-color: #000000 !important;
+  background-image: url("images/wallpaper.jpg");
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   justify-content: space-between;
@@ -63,7 +66,7 @@ html,
   border-radius: 30px;
 }
 
-.card {
+.cardTournament {
   background-color: #3f434a;
   margin-bottom: 50px;
   width: 1200px;
@@ -262,21 +265,7 @@ input[type="text"] {
   font-size: 17px;
   margin: 4px 2px;
   overflow: hidden;
-
 }
-<<<<<<< HEAD
-
-.cart {
-  float: right;
-  color: black;
-}
-
-.cartItems {
-  display: flex;
-  flex-direction: row;
-  margin: 25px;
-}
-=======
 .languages {
   height: 500px;
   width: 500px;
@@ -284,7 +273,6 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-
 }
 
 .language {
@@ -296,9 +284,8 @@ input[type="text"] {
   background-color: rgb(255, 255, 255);
   border: 1px solid #222;
   margin: 2px;
-  color:black;
+  color: black;
   border-radius: 12px;
-
 }
 
 .voteCount {
@@ -309,7 +296,7 @@ input[type="text"] {
 }
 
 .language button {
-  background-color: #008CBA; /* Green */
+  background-color: #008cba; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -318,10 +305,7 @@ input[type="text"] {
   display: inline-block;
   font-size: 16px;
   border-radius: 12px;
-
-
 }
 img {
   border-radius: 5%;
 }
->>>>>>> 81509e472cc8534be9face44ac0c19b6c5abbbce
