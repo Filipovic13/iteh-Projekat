@@ -10,10 +10,14 @@ function OneTournament({ tournament }) {
   }
 
   return (
-    <div className="card">
+    <div className="cardTournament">
       <div className="row g-0">
         <div className="col-3 ">
-          <img src={tournament.image_url} className="img-fluid w-100" />
+          <img
+            src={tournament.image_url}
+            className="img-fluid w-100"
+            alt="img"
+          />
         </div>
         <div className="col-6 ">
           <div className="card-body">
