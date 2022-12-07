@@ -49,7 +49,7 @@ class TournamentController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors());
+            return response()->json(['message'=>$validator->errors(), 'status'=>400]);
         }
 
         $tournament = Tournament::create([
@@ -61,7 +61,7 @@ class TournamentController extends Controller
             'image_url'=>  $request->image_url,
         ]);
 
-        return response()->json(['Tournament successfully stored.', new TournamentResource($tournament)]);
+        return response()->json(['message'=>'Tournament successfully stored.', 'data'=>new TournamentResource($tournament), 'status'=>200]);
     }
 
     /**
