@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import swal from "sweetalert";
 
 function EventRegistration({ loggedId }) {
   //console.log(loggedId["id"]);
@@ -62,6 +63,10 @@ function EventRegistration({ loggedId }) {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        if (response.data.status === 200) {
+          swal("Success", response.data.message, "success");
+        } else if (response.data.status === 400) {
+        }
       })
       .catch(function (error) {
         console.log(error);
