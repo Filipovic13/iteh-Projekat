@@ -38,7 +38,7 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
-        return response()->json(['data' => $user, 'access_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json(['data' => $user, 'access_token' => $token, 'token_type' => 'Bearer', 'message'=>'Registred successfully']);
     }
 
     //login proverava postojanje korisnika u bazi
@@ -52,17 +52,25 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();
+        if($user->role == "admin") 
+        {
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+            $token = $user->createToken("auth_token", ['server:admin'])->plainTextToken;
+            
+            return response()->json(['success' => true, 'access_token' => $token, 'token_type' => 'Beraer', "user_id" => $user->id,  "role" => $user->role,'message'=>'Welcome '. $user->name]);
+        }
 
-        return response()->json(['success' => true, 'access_token' => $token, 'token_type' => 'Beraer', "id" => $user->id]);
+        $token = $user->createToken('auth_token', [''])->plainTextToken;
+
+        return response()->json(['success' => true, 'access_token' => $token, 'token_type' => 'Beraer', "user_id" => $user->id,  "role" => $user->role,'message'=>'Welcome '. $user->name]);
     }
 
     public function logout()
     {
         auth()->user()->tokens()->delete();
-        return [
-            'message' => 'Logged out'
-        ];
+        return response()->json([
+            'status'=>200,
+            'message' => 'Logged out successfully',
+        ]);
     }
 }
