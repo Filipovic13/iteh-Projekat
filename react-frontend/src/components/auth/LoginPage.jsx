@@ -27,11 +27,10 @@ function LoginPage({ addToken, setRole }) {
       .then((res) => {
         console.log(res.data);
         if (res.data.success === true) {
-          let token = res.data.access_token;
           window.sessionStorage.setItem("auth_token", res.data.access_token);
           window.sessionStorage.setItem("user_id", res.data.user_id);
 
-          addToken(token);
+          addToken(res.data.access_token);
           setRole(res.data.role);
 
           swal("Logged in succesfully", res.data.message, "success");

@@ -5,7 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
-function NavBar({ token, cartNum, setToken }) {
+function NavBar({ cartNum, setToken }) {
   let navigate = useNavigate();
 
   function handleLogout(e) {
@@ -57,14 +57,14 @@ function NavBar({ token, cartNum, setToken }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              {token ? (
+              {window.sessionStorage.getItem("auth_token") ? (
                 <Link className="nav-link" aria-current="page" to="/products">
                   Shop
                 </Link>
               ) : (
                 <></>
               )}
-              {token ? (
+              {window.sessionStorage.getItem("auth_token") ? (
                 <Link className="nav-link" to="/tournaments">
                   Tournaments
                 </Link>
@@ -81,13 +81,13 @@ function NavBar({ token, cartNum, setToken }) {
               <Link className="nav-link" aria-current="page" to="/contact">
                 Contact
               </Link>
-              {token == null ? (
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              ) : (
+              {window.sessionStorage.getItem("auth_token") ? (
                 <Link className="nav-link" to="/login" onClick={handleLogout}>
                   Logout
+                </Link>
+              ) : (
+                <Link className="nav-link" to="/login">
+                  Login
                 </Link>
               )}
               <div className="cart">
