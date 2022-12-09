@@ -17,13 +17,14 @@ import DashboardPage from "./components/admin/DashboardPage";
 import ProfilePage from "./components/admin/ProfilePage";
 
 import AddTournamentPage from "./components/admin/Tournament/AddTournamentPage";
+import EditTournamentPage from "./components/admin/Tournament/EditTournamentPage";
 
 //Ostalo
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import AdminPrivateRoutes from "./PrivateRoutes/AdminPrivateRoutes";
-import UserPrivateRoutes from "./PrivateRoutes/UserPrivateRoutes";
+import ViewTournamentsPage from "./components/admin/Tournament/ViewTournamentsPage";
 
 function App() {
   const [token, setToken] = useState();
@@ -96,15 +97,15 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
 
           {/* Routes for logged in users */}
-          <Route element={<UserPrivateRoutes role={role} />}>
-            <Route path="tournaments" element={<TournamentsPage />} />
-            <Route path="/registrations" element={<EventRegistration />} />
-            <Route
-              path="products"
-              element={<Products products={products} addItem={addItem} />}
-            />
-            <Route path="/cart" element={<Cart products={cartItems} />} />
-          </Route>
+          {/* <Route element={<UserPrivateRoutes role={role} />}> */}
+          <Route path="tournaments" element={<TournamentsPage />} />
+          <Route path="/registrations" element={<EventRegistration />} />
+          <Route
+            path="products"
+            element={<Products products={products} addItem={addItem} />}
+          />
+          <Route path="/cart" element={<Cart products={cartItems} />} />
+          {/* </Route> */}
         </Route>
 
         {/* <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
@@ -124,7 +125,18 @@ function App() {
         <Route element={<AdminPrivateRoutes />}>
           <Route path="/admin" element={<MainLayout />}>
             <Route path="/admin/dashboard" element={<DashboardPage />} />
-            <Route path="/admin/tournaments" element={<AddTournamentPage />} />
+            <Route
+              path="/admin/tournaments"
+              element={<ViewTournamentsPage />}
+            />
+            <Route
+              path="/admin/tournaments/store"
+              element={<AddTournamentPage />}
+            />
+            <Route
+              path="/admin/tournaments/:tournamentId/edit"
+              element={<EditTournamentPage />}
+            />
             <Route path="/admin/profile" element={<ProfilePage />} />
           </Route>
         </Route>
