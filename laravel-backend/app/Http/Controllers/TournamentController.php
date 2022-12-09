@@ -81,9 +81,20 @@ class TournamentController extends Controller
      * @param  \App\Models\Tournament  $tournament
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tournament $tournament)
+    public function edit($id)
     {
-        //
+        $tournament = Tournament::find($id);
+        if($tournament){
+            return response()->json([
+                'status'=>200,
+                'tournament'=>$tournament
+            ]);
+        }else{
+            return response()->json([
+                'status'=>404,
+                'message'=>'No Tournament Id found'
+            ]);
+        }
     }
 
     /**
@@ -93,7 +104,7 @@ class TournamentController extends Controller
      * @param  \App\Models\Tournament  $tournament
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournament $tournament)
+    public function update(Request $request,  $id)
     {
         $validator = Validator::make($request->all(), [
             'event_name'=> 'required|string',
@@ -105,21 +116,36 @@ class TournamentController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors());
+            return response()->json(["status"=>422,"errors"=>$validator->errors()]);
+        }else{
+
+
         }
 
-        $tournament->event_name = $request->event_name;
-        $tournament->country = $request->country;
-        $tournament->city = $request->city;
-        $tournament->ruleset = $request->ruleset;
-        $tournament->date = $request->date;
-        $tournament->image_url = $request->image_url;
+        $tournament = Tournament::find($id);
+        if($tournament){
+            $tournament->event_name = $request->event_name;
+            $tournament->country = $request->country;
+            $tournament->city = $request->city;
+            $tournament->ruleset = $request->ruleset;
+            $tournament->date = $request->date;
+            $tournament->image_url = $request->image_url;
+
+            $tournament->save();
+
+            return response()->json(["status"=>200,"message"=>'Tournament is updated successfully',"tournament"=>new TournamentResource($tournament)]);
+       
+
+        }else{
+            return response()->json([
+                'status'=>404,
+                'message'=>"Tournament with id doesn't exist"
+            ]);
+        }
+       
     
 
-        $tournament->save();
-
-        return response()->json(['Tournament is updated successfully',new TournamentResource($tournament)]);
-    }
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -127,10 +153,18 @@ class TournamentController extends Controller
      * @param  \App\Models\Tournament  $tournament
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tournament $tournament)
+    public function destroy( $id)
     {
-        $tournament->delete();
+        $tournament = Tournament::find($id);
+        if($tournament){
 
-        return response()->json('Tournamrnt is successfully deleted.');
+            $tournament->delete();
+
+            return response()->json(["status"=>200,"message"=>'Tournamrnt is successfully deleted.']);
+        }else{
+
+            return response()->json(["status"=>404,"message"=>'Tournamrnt ID not found.']);
+        }
+       
     }
 }
