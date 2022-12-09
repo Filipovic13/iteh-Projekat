@@ -1,36 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 export default function AddTournamentPage() {
-  const [tournaments, setTournaments] = useState([]);
-
-  useEffect(() => {
-    const loadData = async () => {
-      // const response = await axios.get("api/tournaments");
-      // console.log(response.data.tournaments);
-      // setData(response.data.tournaments);
-
-      var config = {
-        method: "get",
-        url: "api/admin/tournaments",
-        headers: {
-          Authorization:
-            "Bearer " + window.sessionStorage.getItem("auth_token"),
-        },
-      };
-
-      axios(config)
-        .then(function (response) {
-          setTournaments(response.data.tournaments);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-
-    loadData();
-  }, []);
+  //const [loading, setLoading] = useState(true);
 
   const [tournament, setTournament] = useState({
     event_name: "",
@@ -87,9 +61,12 @@ export default function AddTournamentPage() {
       });
   }
 
+  // if (loading) {
+  //   return <h4>Loading All Tournaments</h4>;
+  // }
   return (
     <div className="container-fluid px-4 ">
-      <h1>Tournamnets</h1>
+      <h1>Add Tournamnet</h1>
 
       <div
         style={{
@@ -98,154 +75,80 @@ export default function AddTournamentPage() {
           padding: "20px",
         }}
       >
-        <ul className="nav nav-tabs" id="myTab" role="tablist">
-          <li className="nav-item" role="presentation">
-            <button
-              className="nav-link active"
-              id="view-all-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#view-all-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="view-all-tab-pane"
-              aria-selected="true"
-            >
-              View all
-            </button>
-          </li>
-          <li className="nav-item" role="presentation">
-            <button
-              className="nav-link"
-              id="add-new-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#add-new-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="add-new-tab-pane"
-              aria-selected="false"
-            >
-              Add new
-            </button>
-          </li>
-        </ul>
-        <div className="tab-content" id="myTabContent">
-          <div
-            className="tab-pane fade show active"
-            id="view-all-tab-pane"
-            role="tabpanel"
-            aria-labelledby="view-all-tab"
-            tabIndex="0"
-          >
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">EVENT NAME</th>
-                  <th scope="col">COUNTRY</th>
-                  <th scope="col">CITY</th>
-                  <th scope="col">RULESET</th>
-                  <th scope="col">DATE</th>
-                  <th scope="col">IMAGE URL</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tournaments.map((t) => (
-                  <tr key={t.id}>
-                    <td>{t.id}</td>
-                    <td>{t.event_name}</td>
-                    <td>{t.country}</td>
-                    <td>{t.city}</td>
-                    <td>{t.ruleset}</td>
-                    <td>{t.date}</td>
-                    <td>{t.image_url}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <form
+          onSubmit={handleAddedTournament}
+          id="formAddTournament"
+          className="form-group"
+          style={{ color: "black" }}
+        >
+          <div className="form-group">
+            <label>Event name</label>
+            <input
+              type="text"
+              className="form-control"
+              name="event_name"
+              placeholder="Name of the event - tournament"
+              onInput={handleInput}
+            />
           </div>
-          <div
-            className="tab-pane fade"
-            id="add-new-tab-pane"
-            role="tabpanel"
-            aria-labelledby="add-new-tab"
-            tabIndex="0"
-          >
-            <form
-              onSubmit={handleAddedTournament}
-              id="formAddTournament"
-              className="form-group"
-              style={{ color: "black" }}
-            >
-              <div className="form-group">
-                <label>Event name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="event_name"
-                  placeholder="Name of the event - tournament"
-                  onInput={handleInput}
-                />
-              </div>
 
-              <div className="form-group">
-                <label>Country</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="country"
-                  placeholder="Country where event is taking place"
-                  onInput={handleInput}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>City</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="city"
-                  placeholder="City"
-                  onInput={handleInput}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Ruleset</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="ruleset"
-                  placeholder="ADCC / Submission / Grappling / IBJF"
-                  onInput={handleInput}
-                />
-              </div>
-              <div className="form-group">
-                <label>Date</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  name="date"
-                  onInput={handleInput}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Image URL</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="image_url"
-                  placeholder="URL of the image"
-                  onInput={handleInput}
-                />
-              </div>
-
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
+          <div className="form-group">
+            <label>Country</label>
+            <input
+              type="text"
+              className="form-control"
+              name="country"
+              placeholder="Country where event is taking place"
+              onInput={handleInput}
+            />
           </div>
-        </div>
+
+          <div className="form-group">
+            <label>City</label>
+            <input
+              type="text"
+              className="form-control"
+              name="city"
+              placeholder="City"
+              onInput={handleInput}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Ruleset</label>
+            <input
+              type="text"
+              className="form-control"
+              name="ruleset"
+              placeholder="ADCC / Submission / Grappling / IBJF"
+              onInput={handleInput}
+            />
+          </div>
+          <div className="form-group">
+            <label>Date</label>
+            <input
+              type="date"
+              className="form-control"
+              name="date"
+              onInput={handleInput}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Image URL</label>
+            <input
+              type="text"
+              className="form-control"
+              name="image_url"
+              placeholder="URL of the image"
+              onInput={handleInput}
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
   );
