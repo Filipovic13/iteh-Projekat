@@ -33,8 +33,7 @@ Route::post('/login', [AuthController::class, 'login']);
 //Route::resource('registrations', RegistrationController::class);
 //Route::get('/users/{id}/registrations', [UserRegistrationController::class, 'index'])->name('users.registration.index');
 //Route::get('/  ', [ProductController::class, 'index']);
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
+
 Route::get('/users', [RegistrationController::class, 'index']);
 Route::get('/users/{id}', [RegistrationController::class, 'show']);
 Route::post('/cart', [CartController::class, 'store']);
@@ -45,8 +44,14 @@ Route::post('/cart', [CartController::class, 'store']);
 Route::group(['middleware'=>['auth:sanctum'] ], function(){
 
     Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::resource('tournaments', TournamentController::class)->only(['index','store']);
+
     Route::resource('registrations', RegistrationController::class);
+
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+    
     Route::get('/users', [RegistrationController::class, 'index']);
     Route::get('/users/{id}', [RegistrationController::class, 'show']);
 
