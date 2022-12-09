@@ -40,7 +40,7 @@ export default function MainLayout() {
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseTournament"
                   aria-expanded="false"
-                  aria-controls="collapseTournament"
+                  aria-controls="collapseProduct"
                 >
                   <div className="sb-nav-link-icon">
                     <i className="fas fa-columns"></i>
@@ -58,13 +58,10 @@ export default function MainLayout() {
                 >
                   <nav className="sb-sidenav-menu-nested nav">
                     <Link className="nav-link" to="/admin/tournaments">
-                      View and Store
+                      View and Edit Tournaments
                     </Link>
-                    <Link className="nav-link" to="/admin/:id">
-                      Delete Tournament
-                    </Link>
-                    <Link className="nav-link" to="/admin/tournaments/:id">
-                      Update Tournament
+                    <Link className="nav-link" to="/admin/tournaments/store">
+                      Add Tournament
                     </Link>
                   </nav>
                 </div>
