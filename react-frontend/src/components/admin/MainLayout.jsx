@@ -89,10 +89,10 @@ export default function MainLayout() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav className="sb-sidenav-menu-nested nav">
-                    <Link className="nav-link" to="/admin/add-product">
+                    <Link className="nav-link" to="/admin/products/store">
                       Add Product
                     </Link>
-                    <Link className="nav-link" to="/admin/view-product">
+                    <Link className="nav-link" to="/admin/products">
                       View Product
                     </Link>
                   </nav>
