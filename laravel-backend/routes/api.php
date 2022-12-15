@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CheckoutController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
@@ -36,7 +37,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/users', [RegistrationController::class, 'index']);
 Route::get('/users/{id}', [RegistrationController::class, 'show']);
-Route::post('/cart', [CartController::class, 'store']);
+
 
 
 
@@ -51,6 +52,13 @@ Route::group(['middleware'=>['auth:sanctum'] ], function(){
 
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{id}', [ProductController::class, 'show']);
+
+    Route::post('/cart/add', [CartController::class, 'addToCart']);
+    Route::get('/cart/get', [CartController::class, 'getCart']);
+    Route::put('/cart/{cart_id}/{scope}', [CartController::class, 'updateQuantity']);
+    Route::delete('/cart/{cart_id}', [CartController::class, 'deleteCartItem']);
+
+    Route::post('/placeOrder',[CheckoutController::class,'placeOrder']);
     
     Route::get('/users', [RegistrationController::class, 'index']);
     Route::get('/users/{id}', [RegistrationController::class, 'show']);
@@ -60,3 +68,4 @@ Route::group(['middleware'=>['auth:sanctum'] ], function(){
 
 
 require __DIR__ . '/admin.php';
+
