@@ -57,21 +57,6 @@ function NavBar({ cartNum, setToken }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              {window.sessionStorage.getItem("auth_token") ? (
-                <Link className="nav-link" aria-current="page" to="/products">
-                  Shop
-                </Link>
-              ) : (
-                <></>
-              )}
-              {window.sessionStorage.getItem("auth_token") ? (
-                <Link className="nav-link" to="/tournaments">
-                  Tournaments
-                </Link>
-              ) : (
-                <></>
-              )}
-
               <Link className="nav-link" aria-current="page" to="/rating">
                 Voting
               </Link>
@@ -81,6 +66,28 @@ function NavBar({ cartNum, setToken }) {
               <Link className="nav-link" aria-current="page" to="/contact">
                 Contact
               </Link>
+
+              {window.sessionStorage.getItem("auth_token") ? (
+                <Link className="nav-link" to="/tournaments">
+                  Tournaments
+                </Link>
+              ) : (
+                <></>
+              )}
+              {window.sessionStorage.getItem("auth_token") ? (
+                <Link className="nav-link" aria-current="page" to="/products">
+                  Shop
+                </Link>
+              ) : (
+                <></>
+              )}
+              {window.sessionStorage.getItem("auth_token") ? (
+                <Link className="nav-link" aria-current="page" to="/cart">
+                  Cart
+                </Link>
+              ) : (
+                <></>
+              )}
               {window.sessionStorage.getItem("auth_token") ? (
                 <Link className="nav-link" to="/login" onClick={handleLogout}>
                   Logout
