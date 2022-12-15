@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -15,8 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-
-        return $products;
+        return new ProductCollection($products);
     }
 
     /**
@@ -37,7 +39,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'=> 'required|string',
+            'price'=> 'required',
+            'category'=> 'required|string',
+            'quantity'=> 'required',
+            'brand'=> 'required|string',
+            'image_url'=> 'required|string',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['message'=>$validator->errors(), 'status'=>422]);
+        }
+
+        $product = Product::create([
+            'name'=> $request->name,
+            'price'=>  $request->price,
+            'category'=>  $request->category,
+            'quantity'=> $request->quantity,
+            'brand'=>  $request->brand,
+            'image_url'=>  $request->image_url,
+        ]);
+
+        return response()->json(['message'=>'Product successfully stored', 'data'=>new ProductResource($product), 'status'=>200]);
     }
 
     /**
@@ -49,7 +73,11 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return $product;
+        if($product){
+            return response()->json(['status'=>200, 'product'=>$product]);
+        }else{
+            return response()->json(['status'=>404, 'message'=>'ID not found']);
+        }
     }
 
     /**
@@ -58,9 +86,20 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        if($product){
+            return response()->json([
+                'status'=>200,
+                'product'=>$product
+            ]);
+        }else{
+            return response()->json([
+                'status'=>404,
+                'message'=>'No Product Id found'
+            ]);
+        }
     }
 
     /**
@@ -70,9 +109,43 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'=> 'required|string',
+            'price'=> 'required',
+            'ctegory'=> 'required|string',
+            'quantity'=> 'required',
+            'brand'=> 'required|string',
+            'image_url'=> 'required|string',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(["status"=>422,"errors"=>$validator->errors()]);
+        }
+
+        $product = Product::find($id);
+        if($product){
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->category = $request->category;
+            $product->quantity = $request->quantity;
+            $product->brand = $request->brand;
+            $product->image_url = $request->image_url;
+
+            $product->save();
+
+            return response()->json(["status"=>200,"message"=>'Product is updated successfully',"product"=>new ProductResource($product)]);
+       
+
+        }else{
+            return response()->json([
+                'status'=>404,
+                'message'=>"Product with id doesn't exist"
+            ]);
+        }
+       
+    
     }
 
     /**
@@ -81,8 +154,17 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy( $id)
     {
-        //
+        $product = Product::find($id);
+        if($product){
+
+            $product->delete();
+
+            return response()->json(["status"=>200,"message"=>'Product is successfully deleted.']);
+        }else{
+
+            return response()->json(["status"=>404,"message"=>'Product ID not found.']);
+        }
     }
 }

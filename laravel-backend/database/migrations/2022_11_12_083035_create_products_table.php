@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('quantity');
             $table->string('brand');
             $table->string('image_url');
+            $table->longText('description');
             $table->timestamps();
         });
     }
