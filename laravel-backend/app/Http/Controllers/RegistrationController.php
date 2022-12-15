@@ -58,7 +58,7 @@ class RegistrationController extends Controller
             'tournament_id'=> $request->tournament_id
         ]);
 
-        return response()->json(['Successfully registered.', new RegistrationResource($registration)]);
+        return response()->json(['status'=>200, 'message'=>'Successfully registered', 'registration'=>new RegistrationResource($registration)]);
     }
 
     public function update(Request $request, Registration $registration)

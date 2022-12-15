@@ -49,7 +49,7 @@ class TournamentController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json(['message'=>$validator->errors(), 'status'=>400]);
+            return response()->json(['message'=>$validator->errors(), 'status'=>422]);
         }
 
         $tournament = Tournament::create([
@@ -117,9 +117,6 @@ class TournamentController extends Controller
 
         if($validator->fails()){
             return response()->json(["status"=>422,"errors"=>$validator->errors()]);
-        }else{
-
-
         }
 
         $tournament = Tournament::find($id);
