@@ -16,8 +16,9 @@ class CartResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'name'=>$this->resource->name,
-            'amount'=>$this->resource->amount,
+            'user_id'=>$this->resource->user_id,
+            'product_id'=>$this->resource->product_id,
+            'product_qty'=>$this->resource->product_qty,
         ];
     }
 }
