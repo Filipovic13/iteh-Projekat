@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
                 'city' => 'Banská Bystrica',
                 'ruleset' => 'ADCC',
                 'date' => '2022-11-06',
-                'image_url' => 'https://fightportal.eu/wp-content/uploads/2022/10/805A6BBA-FA3A-464C-A48E-7F1DF792C2B1.jpeg'
+                'image_url' => 'https://smoothcomp.com/pictures/t/1658170-7ckx/adcc-slovak-open-2022.png'
             ]
         );
 
@@ -127,24 +127,44 @@ class DatabaseSeeder extends Seeder
 
 
         $prod1 = Product::create([
-            'name' => 'Blue venom kimono',
+            'name' => 'Navy venom kimono',
+            'price'=>"12990",
+            'category'=>"Kimono",
+            'quantity'=>"200",
+            'brand'=>"Venom",
             'image_url' => 'https://fightshop.rs/wp-content/uploads/2019/11/venum-03057-018-a0-venum-03057-018-a0-galery_image_1-bjj_gi_contender_2_0_blue_navy_1500_01.jpg',
-            'price'=>12990,
-            'amount'=>0,
+            'description'=>"This is the second version of our Venum BJJ Contender Gi, more durable and comfortable than the previous model!
+            The jacket is 100% Pearl Weave Cotton, perfectly combining strength and comfort. Along with reinforced seams!
+            The collar is reinforced with EVA foam to help you resist grips and help counter the attacks of your opponents.
+            The pants are 100% cotton and are reinforced inside of the leg and ankle cuffs.",
+
         ]);
 
         $prod2 = Product::create([
             'name' => 'Grey venom kimono',
+            'price'=>"11990",
+            'category'=>"Kimono",
+            'quantity'=>"300",
+            'brand'=>"Venom",
             'image_url' => 'https://fightshop.rs/wp-content/uploads/2020/03/venum-03057-010-a0-venum-03057-010-a0-galery_image_1-bjj_gi_contender_2_0_grey_1500_01.jpg',
-            'price'=>11990,
-            'amount'=>0,
+            'description'=>"This is the second version of our Venum BJJ Contender Gi, more durable and comfortable than the previous model!
+            The jacket is 100% Pearl Weave Cotton, perfectly combining strength and comfort. Along with reinforced seams!
+            The collar is reinforced with EVA foam to help you resist grips and help counter the attacks of your opponents.
+            The pants are 100% cotton and are reinforced inside of the leg and ankle cuffs.",
         ]);
 
         $prod3 = Product::create([
             'name' => 'Black venom kimono',
+            'price'=>"10500",
+            'category'=>"Kimono",
+            'quantity'=>"150",
+            'brand'=>"Venom",
             'image_url' => 'https://fightshop.rs/wp-content/uploads/2018/01/bjj_gi_contender_2_0_black_1500_01_1_4.jpg',
-            'price'=>10500,
-            'amount'=>0,
+            'description'=>"This is the second version of our Venum BJJ Contender Gi, more durable and comfortable than the previous model!
+            The jacket is 100% Pearl Weave Cotton, perfectly combining strength and comfort. Along with reinforced seams!
+            The collar is reinforced with EVA foam to help you resist grips and help counter the attacks of your opponents.
+            The pants are 100% cotton and are reinforced inside of the leg and ankle cuffs.",
+ 
         ]);
 
 
