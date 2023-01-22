@@ -2,6 +2,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ Route::prefix('admin')->group( function(){
 
         Route::resource('tournaments', TournamentController::class)->only(['index','store','edit','update','destroy']);
 
-        Route::resource('registrations', TournamentController::class)->only(['index','destroy']);
+        Route::resource('registrations', RegistrationController::class)->only(['index','destroy']);
 
         Route::resource('products', ProductController::class)->only(['index','store','edit','update','destroy']);
         
