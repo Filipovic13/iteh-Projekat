@@ -299,7 +299,7 @@ input[type="text"] {
 }
 
 .language button {
-   background-color: #008cba; /* Green */
+   background-color: #008cba;
    border: none;
    color: white;
    padding: 15px 32px;
@@ -315,4 +315,14 @@ img {
 
 .checkout {
    color: #000000;
+}
+
+.joke {
+   background-color: rgba(255, 255, 255, 0.607);
+   color: white;
+   border-radius: 1em;
+   padding: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
