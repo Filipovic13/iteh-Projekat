@@ -14,6 +14,9 @@ import { Cart } from "./components/Cart";
 import DetailsProduct from "./components/ProductDetails";
 import Checkout from "./components/Checkout";
 
+import ViewRegistrationsPage from "./components/admin/Regitrations/ViewRegistrationsPage";
+import ChuckNorrisJokes from "./components/ChuckNorrisJokes";
+
 ///////////////////////////////////////////////////////////////
 import AdminPrivateRoutes from "./PrivateRoutes/AdminPrivateRoutes";
 
@@ -68,6 +71,7 @@ function App() {
                <Route path="/rating" element={<Rating />} />
                <Route path="/stats" element={<Stats />} />
                <Route path="/contact" element={<ContactPage />} />
+               <Route path="/ChuckNoris" element={<ChuckNorrisJokes />} />
 
                {/* Routes for logged in users */}
                <Route path="tournaments" element={<TournamentsPage />} />
@@ -85,6 +89,10 @@ function App() {
             <Route element={<AdminPrivateRoutes />}>
                <Route path="/admin" element={<MainLayout />}>
                   <Route path="/admin/dashboard" element={<DashboardPage />} />
+                  <Route
+                     path="/admin/registrations"
+                     element={<ViewRegistrationsPage />}
+                  />
                   <Route
                      path="/admin/tournaments"
                      element={<ViewTournamentsPage />}
