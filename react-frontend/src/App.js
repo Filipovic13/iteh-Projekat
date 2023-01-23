@@ -34,6 +34,7 @@ import AddProduct from "./components/admin/Product/AddProduct";
 //Ostalo
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import LocationInfo from "./components/LoacationInfo";
 
 function App() {
    const [token, setToken] = useState();
@@ -72,6 +73,7 @@ function App() {
                <Route path="/stats" element={<Stats />} />
                <Route path="/contact" element={<ContactPage />} />
                <Route path="/ChuckNoris" element={<ChuckNorrisJokes />} />
+               <Route path="/LocationInfo" element={<LocationInfo />} />
 
                {/* Routes for logged in users */}
                <Route path="tournaments" element={<TournamentsPage />} />

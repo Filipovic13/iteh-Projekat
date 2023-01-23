@@ -86,6 +86,14 @@ function NavBar({ cartNum, setToken }) {
                         Chuck Noris Jokes
                      </Link>
 
+                     <Link
+                        className="nav-link"
+                        aria-current="page"
+                        to="/LocationInfo"
+                     >
+                        Location Info
+                     </Link>
+
                      {window.sessionStorage.getItem("auth_token") ? (
                         <Link className="nav-link" to="/tournaments">
                            Tournaments
