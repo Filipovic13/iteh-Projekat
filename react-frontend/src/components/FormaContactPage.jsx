@@ -22,15 +22,17 @@ function FormaContactPage(props) {
     borderRadius: "25px",
     border: "2px solid #FFFFFF",
     marginTop: "50px",
-    marginBottom: "80x",
-    // marginRight: "300px",
-    marginLeft: "600px",
-    padding: "20px",
-    width: "300px",
+    marginTop: "50px",
+    marginBottom: "60px",
+    marginRight: "650px",
+    marginLeft: "650px",
+    width: "500px",
+
   };
 
   return (
     <div style={style}>
+      <h1 id='contact-us'>Contact us</h1>
       <div className="form">
         <div className="formacontactpage_div">
           <form id="formacontact_div">

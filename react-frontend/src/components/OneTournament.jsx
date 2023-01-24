@@ -25,7 +25,7 @@ function OneTournament({ tournament }) {
             <p className="card-text">Country: {tournament.country}</p>
             <p className="card-text">City: {tournament.city}</p>
             <p className="card-text">Ruleset: {tournament.ruleset}</p>
-            <p className="card-text">Date of thr event: {tournament.date}</p>
+            <p className="card-text">Date of the event: {tournament.date}</p>
           </div>
         </div>
         <div
