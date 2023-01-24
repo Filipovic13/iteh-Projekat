@@ -12,7 +12,18 @@ function LocationInfo() {
    ]);
    const [cities, setCities] = useState([]);
    const [cityCode, setCityCode] = useState([]);
+   const style = {
+      backgroundColor: "white",
+      opacity: 0.97,
+      textAlign: "center",
+      borderRadius: "25px",
+      border: "2px solid grey",
+      marginTop: "50px",
+      marginBottom: "60px",
+      marginRight: "20px",
+      marginLeft: "20px",
 
+    };
    const onChangeComboBox = (e) => {
       const countryID = e.target.value;
       setCityCode(e.target.value);
@@ -87,9 +98,10 @@ function LocationInfo() {
          </div>
 
          <div>
+         <div style={style}>
             <table className="table mt-5">
                <thead>
-                  <tr style={{ color: "white" }}>
+                  <tr style={{ color: "black" }}>
                      <th scope="col">CITY</th>
                      <th scope="col">REGION</th>
                      <th scope="col">COUNTRY CODE</th>
@@ -111,6 +123,7 @@ function LocationInfo() {
                   ))}
                </tbody>
             </table>
+            </div>
          </div>
       </div>
    );
