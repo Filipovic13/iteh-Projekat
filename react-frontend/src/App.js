@@ -35,6 +35,7 @@ import AddProduct from "./components/admin/Product/AddProduct";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import LocationInfo from "./components/LoacationInfo";
+import { UserPrivateRoutes } from "./PrivateRoutes/UserPrivateRoutes";
 
 function App() {
    const [token, setToken] = useState();
@@ -76,15 +77,20 @@ function App() {
                <Route path="/LocationInfo" element={<LocationInfo />} />
 
                {/* Routes for logged in users */}
-               <Route path="tournaments" element={<TournamentsPage />} />
-               <Route path="/registrations" element={<EventRegistration />} />
-               <Route path="/products" element={<Products />} />
-               <Route
-                  path="/products/:productId"
-                  element={<DetailsProduct />}
-               />
-               <Route path="/cart" element={<Cart />} />
-               <Route path="/checkout" element={<Checkout />} />
+               <Route element={<UserPrivateRoutes />}>
+                  <Route path="tournaments" element={<TournamentsPage />} />
+                  <Route
+                     path="/registrations"
+                     element={<EventRegistration />}
+                  />
+                  <Route path="/products" element={<Products />} />
+                  <Route
+                     path="/products/:productId"
+                     element={<DetailsProduct />}
+                  />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+               </Route>
             </Route>
 
             {/* Admin routes */}
