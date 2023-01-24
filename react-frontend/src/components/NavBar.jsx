@@ -6,110 +6,149 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 function NavBar({ cartNum, setToken }) {
-  let navigate = useNavigate();
+   let navigate = useNavigate();
 
-  function handleLogout(e) {
-    e.preventDefault();
-    var config = {
-      method: "post",
-      url: "api/logout",
-      headers: {
-        Authorization: "Bearer " + window.sessionStorage.getItem("auth_token"),
-      },
-    };
+   function handleLogout(e) {
+      e.preventDefault();
+      var config = {
+         method: "post",
+         url: "api/logout",
+         headers: {
+            Authorization:
+               "Bearer " + window.sessionStorage.getItem("auth_token"),
+         },
+      };
 
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        window.sessionStorage.removeItem("auth_token");
-        window.sessionStorage.removeItem("user_id");
-        setToken(null);
+      axios(config)
+         .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            window.sessionStorage.removeItem("auth_token");
+            window.sessionStorage.removeItem("user_id");
+            setToken(null);
 
-        swal("Success", response.data.message, "success");
-        navigate("/");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+            swal("Success", response.data.message, "success");
+            navigate("/");
+         })
+         .catch(function (error) {
+            console.log(error);
+         });
+   }
 
-  return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            <img
-              src="https://t4.ftcdn.net/jpg/04/43/34/03/360_F_443340374_QqpPwEqSCgChDSJFJNt2bTu2XTe4fISp.jpg"
-              alt="belt"
-              style={{ width: 100 }}
-            />
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <Link className="nav-link" aria-current="page" to="/rating">
-                Voting
-              </Link>
-              <Link className="nav-link" aria-current="page" to="/stats">
-                Stats
-              </Link>
-              <Link className="nav-link" aria-current="page" to="/contact">
-                Contact
-              </Link>
+   return (
+      <div>
+         <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+               <Link className="navbar-brand" to="/">
+                  <img
+                     src="https://t4.ftcdn.net/jpg/04/43/34/03/360_F_443340374_QqpPwEqSCgChDSJFJNt2bTu2XTe4fISp.jpg"
+                     alt="belt"
+                     style={{ width: 100 }}
+                  />
+               </Link>
+               <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavAltMarkup"
+                  aria-controls="navbarNavAltMarkup"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+               >
+                  <span className="navbar-toggler-icon"></span>
+               </button>
+               <div
+                  className="collapse navbar-collapse"
+                  id="navbarNavAltMarkup"
+               >
+                  <div className="navbar-nav">
+                     <Link
+                        className="nav-link"
+                        aria-current="page"
+                        to="/rating"
+                     >
+                        Voting
+                     </Link>
+                     <Link className="nav-link" aria-current="page" to="/stats">
+                        Stats
+                     </Link>
+                     <Link
+                        className="nav-link"
+                        aria-current="page"
+                        to="/contact"
+                     >
+                        Contact
+                     </Link>
+                     <Link
+                        className="nav-link"
+                        aria-current="page"
+                        to="/ChuckNoris"
+                     >
+                        Chuck Noris Jokes
+                     </Link>
 
-              {window.sessionStorage.getItem("auth_token") ? (
-                <Link className="nav-link" to="/tournaments">
-                  Tournaments
-                </Link>
-              ) : (
-                <></>
-              )}
-              {window.sessionStorage.getItem("auth_token") ? (
-                <Link className="nav-link" aria-current="page" to="/products">
-                  Shop
-                </Link>
-              ) : (
-                <></>
-              )}
-              {window.sessionStorage.getItem("auth_token") ? (
-                <Link className="nav-link" aria-current="page" to="/cart">
-                  Cart
-                </Link>
-              ) : (
-                <></>
-              )}
-              {window.sessionStorage.getItem("auth_token") ? (
-                <Link className="nav-link" to="/login" onClick={handleLogout}>
-                  Logout
-                </Link>
-              ) : (
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              )}
-              <div className="cart">
-                {" "}
-                <FiShoppingCart />
-                &nbsp;
-                {cartNum}
-              </div>
+                     <Link
+                        className="nav-link"
+                        aria-current="page"
+                        to="/LocationInfo"
+                     >
+                        Location Info
+                     </Link>
+
+                     {window.sessionStorage.getItem("auth_token") ? (
+                        <Link className="nav-link" to="/tournaments">
+                           Tournaments
+                        </Link>
+                     ) : (
+                        <></>
+                     )}
+                     {window.sessionStorage.getItem("auth_token") ? (
+                        <Link
+                           className="nav-link"
+                           aria-current="page"
+                           to="/products"
+                        >
+                           Shop
+                        </Link>
+                     ) : (
+                        <></>
+                     )}
+                     {window.sessionStorage.getItem("auth_token") ? (
+                        <Link
+                           className="nav-link"
+                           aria-current="page"
+                           to="/cart"
+                        >
+                           Cart
+                        </Link>
+                     ) : (
+                        <></>
+                     )}
+                     {window.sessionStorage.getItem("auth_token") ? (
+                        <Link
+                           className="nav-link"
+                           to="/login"
+                           onClick={handleLogout}
+                        >
+                           Logout
+                        </Link>
+                     ) : (
+                        <Link className="nav-link" to="/login">
+                           Login
+                        </Link>
+                     )}
+                     <div className="cart">
+                        {" "}
+                        <FiShoppingCart />
+                        &nbsp;
+                        {cartNum}
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
-      </nav>
-      <Outlet />
-    </div>
-  );
+         </nav>
+         <Outlet />
+      </div>
+   );
 }
 
 export default NavBar;

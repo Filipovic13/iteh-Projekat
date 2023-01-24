@@ -44,6 +44,10 @@ Route::get('/users/{id}', [RegistrationController::class, 'show']);
 //User accessible routes
 Route::group(['middleware'=>['auth:sanctum'] ], function(){
 
+    Route::get('checkingAuthUser', function(){
+        return response()->json(['message'=>"You are in", "status"=>200],200);
+    });
+
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::resource('tournaments', TournamentController::class)->only(['index','store']);

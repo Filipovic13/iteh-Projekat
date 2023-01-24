@@ -46,6 +46,7 @@ class ProductController extends Controller
             'quantity'=> 'required',
             'brand'=> 'required|string',
             'image_url'=> 'required|string',
+            'description'=> 'required|string',
         ]);
 
         if($validator->fails()){
@@ -59,6 +60,7 @@ class ProductController extends Controller
             'quantity'=> $request->quantity,
             'brand'=>  $request->brand,
             'image_url'=>  $request->image_url,
+            'description'=>  $request->description,
         ]);
 
         return response()->json(['message'=>'Product successfully stored', 'data'=>new ProductResource($product), 'status'=>200]);
@@ -118,6 +120,7 @@ class ProductController extends Controller
             'quantity'=> 'required',
             'brand'=> 'required|string',
             'image_url'=> 'required|string',
+            'description'=> 'required|string',
         ]);
 
         if($validator->fails()){
@@ -132,6 +135,7 @@ class ProductController extends Controller
             $product->quantity = $request->quantity;
             $product->brand = $request->brand;
             $product->image_url = $request->image_url;
+            $product->description = $request->description;
 
             $product->save();
 

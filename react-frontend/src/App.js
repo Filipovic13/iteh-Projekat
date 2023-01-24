@@ -14,6 +14,9 @@ import { Cart } from "./components/Cart";
 import DetailsProduct from "./components/ProductDetails";
 import Checkout from "./components/Checkout";
 
+import ViewRegistrationsPage from "./components/admin/Regitrations/ViewRegistrationsPage";
+import ChuckNorrisJokes from "./components/ChuckNorrisJokes";
+
 ///////////////////////////////////////////////////////////////
 import AdminPrivateRoutes from "./PrivateRoutes/AdminPrivateRoutes";
 
@@ -31,6 +34,8 @@ import AddProduct from "./components/admin/Product/AddProduct";
 //Ostalo
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import LocationInfo from "./components/LoacationInfo";
+import { UserPrivateRoutes } from "./PrivateRoutes/UserPrivateRoutes";
 
 function App() {
    const [token, setToken] = useState();
@@ -68,23 +73,34 @@ function App() {
                <Route path="/rating" element={<Rating />} />
                <Route path="/stats" element={<Stats />} />
                <Route path="/contact" element={<ContactPage />} />
+               <Route path="/ChuckNoris" element={<ChuckNorrisJokes />} />
+               <Route path="/LocationInfo" element={<LocationInfo />} />
 
                {/* Routes for logged in users */}
-               <Route path="tournaments" element={<TournamentsPage />} />
-               <Route path="/registrations" element={<EventRegistration />} />
-               <Route path="/products" element={<Products />} />
-               <Route
-                  path="/products/:productId"
-                  element={<DetailsProduct />}
-               />
-               <Route path="/cart" element={<Cart />} />
-               <Route path="/checkout" element={<Checkout />} />
+               <Route element={<UserPrivateRoutes />}>
+                  <Route path="tournaments" element={<TournamentsPage />} />
+                  <Route
+                     path="/registrations"
+                     element={<EventRegistration />}
+                  />
+                  <Route path="/products" element={<Products />} />
+                  <Route
+                     path="/products/:productId"
+                     element={<DetailsProduct />}
+                  />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+               </Route>
             </Route>
 
             {/* Admin routes */}
             <Route element={<AdminPrivateRoutes />}>
                <Route path="/admin" element={<MainLayout />}>
                   <Route path="/admin/dashboard" element={<DashboardPage />} />
+                  <Route
+                     path="/admin/registrations"
+                     element={<ViewRegistrationsPage />}
+                  />
                   <Route
                      path="/admin/tournaments"
                      element={<ViewTournamentsPage />}
