@@ -18,8 +18,8 @@ function ViewRegistrationsPage() {
 
       axios(data)
          .then(function (response) {
-            console.log(response.data.registrations);
-            setRegistrations(response.data.registrations);
+            console.log(response.data);
+            setRegistrations(response.data);
             setLoading(false);
          })
          .catch(function (error) {
@@ -47,25 +47,24 @@ function ViewRegistrationsPage() {
                      <th scope="col">CATEGORY</th>
                      <th scope="col">BELT</th>
                      <th scope="col">EVENT NAME</th>
-                     <th></th>
+                     <th scope="col">COUNTRY</th>
+                     <th scope="col">CITY</th>
+                     <th scope="col">RULESET</th>
+                     <th scope="col">DATE</th>
                   </tr>
                </thead>
                <tbody>
-                  {registrations.map((r) => (
-                     <tr key={r.id}>
+                  {registrations.map((r, index) => (
+                     <tr key={index}>
                         <td>{r.name}</td>
                         <td>{r.surname}</td>
                         <td>{r.category}</td>
                         <td>{r.belt}</td>
                         <td>{r.event_name}</td>
-                        <td>
-                           <button
-                              type="button"
-                              className="btn btn-danger btn-sm"
-                           >
-                              Delete
-                           </button>
-                        </td>
+                        <td>{r.country}</td>
+                        <td>{r.city}</td>
+                        <td>{r.ruleset}</td>
+                        <td>{r.date}</td>
                      </tr>
                   ))}
                </tbody>

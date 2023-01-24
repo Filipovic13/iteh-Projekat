@@ -7,16 +7,24 @@ use App\Http\Resources\RegistrationResource;
 use App\Models\Registration;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
     public function index()
     {
-        $registrations = Registration::all();
+        $registrations = DB::table('registrations')
+        ->join('tournaments', 'tournaments.id',"=","registrations.tournament_id")
+        ->select("registrations.name", "registrations.surname", "registrations.category", "registrations.belt","registrations.event_name",  "tournaments.country","tournaments.city","tournaments.ruleset","tournaments.date",)
+        ->get();
+
+        return $registrations;
+
+        // $registrations = Registration::all();
         //return $registrations;
         //return RegistrationResource::collection($registrations);
-        return new RegistrationCollection($registrations);
+       // return new RegistrationCollection($registrations);
     }
 
     // public function show($reg_id)
