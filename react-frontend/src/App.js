@@ -8,6 +8,8 @@ import TournamentsPage from "./components/TournamentsPage";
 import EventRegistration from "./components/EventRegistration";
 import Products from "./components/Products";
 import Stats from "./components/Stats";
+import Statistics from "./components/Statistics";
+import Stat3 from "./components/Stat3";
 import ContactPage from "./components/ContactPage";
 import Rating from "./components/Rating";
 import { Cart } from "./components/Cart";
@@ -72,6 +74,8 @@ function App() {
 
                <Route path="/rating" element={<Rating />} />
                <Route path="/stats" element={<Stats />} />
+               <Route path="/stats2" element={<Statistics />} />
+               <Route path="/stat3" element={<Stat3 />} />
                <Route path="/contact" element={<ContactPage />} />
                <Route path="/ChuckNoris" element={<ChuckNorrisJokes />} />
                <Route path="/LocationInfo" element={<LocationInfo />} />

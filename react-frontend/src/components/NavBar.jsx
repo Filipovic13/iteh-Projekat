@@ -68,9 +68,11 @@ function NavBar({ cartNum, setToken }) {
                      >
                         Voting
                      </Link>
-                     <Link className="nav-link" aria-current="page" to="/stats">
-                        Stats
+                     <Link className="nav-link" aria-current="page" to="/stats2">
+                        Statistics
                      </Link>
+                    
+
                      <Link
                         className="nav-link"
                         aria-current="page"
