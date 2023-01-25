@@ -57,9 +57,6 @@ class Naslovna extends Component {
           </div>
           <h5 style={style}>
             <h3>ABOUT GRAPPLING</h3>
-            <Link className="nav-link" aria-current="page" to="/stats">
-                        Stats
-                     </Link>
             Grappling, in hand-to-hand combat, describes sports that consist of
             gripping or seizing the opponent. Grappling is used at close range
             to gain a physical advantage over an opponent, either by imposing a
